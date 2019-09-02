@@ -11,3 +11,58 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.App-body {
+  text-align: left;
+}
+
+.info-window {
+  background-color: white;
+  padding: 0.5rem;
+  width: 17rem;
+  height: 5rem;
+}
+
+.img-container {
+  width: 5rem;
+  height: 5rem;
+  margin: 0;
+  float: left;
+  border-radius: 50%;
+  background-color: gray;
+}
+
+.description-container {
+  width: 12rem;
+  margin: 0;
+  float: right;
+}
+
+.info-window img {
+  height: inherit;  
+  border-radius: 50%;
+}
+
+.mar_0 {
+  margin: 0;
+}
+
+.mar_tb_05 {
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+.mar_tb_1 {
+  margin: 1rem 0 1rem 0;
+}
+
+.pad_lr_1 {
+  padding: 0 1rem 0 1rem;
+}
+
+.ln_1 {
+  line-height: 1rem;
+}
+
+.ln_2 {
+  line-height: 2rem;
+}
