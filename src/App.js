@@ -43,7 +43,7 @@ class App extends React.Component {
       <div className="App">
         <header className="">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>Last Location (Teams)</p>
+          <p>Last Location (Teams) </p>
         </header>
         <div className='App-body'>
           <ul>

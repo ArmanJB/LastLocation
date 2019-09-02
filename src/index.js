@@ -4,8 +4,9 @@ import './index.css';
 import App from './App';
 import Maps from './Maps';
 import * as serviceWorker from './serviceWorker';
+require('dotenv').config({path: __dirname + '/.env'})
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Maps />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
