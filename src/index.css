@@ -12,8 +12,14 @@ code {
     monospace;
 }
 
-.App-body {
+.app-body {
   text-align: left;
+}
+
+.map-container {
+  width: calc(100% - 360px);
+  height: 50rem;
+  float: right;
 }
 
 .info-window {

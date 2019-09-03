@@ -1,27 +1,50 @@
 import React from 'react';
 import logo from './logo.svg';
+import Maps from './Maps';
+import List from './NestedList';
 import './App.css';
+import NestedList from './NestedList';
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
+import { fade, makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import InputBase from '@material-ui/core/InputBase';
+import MenuIcon from '@material-ui/icons/Menu';
+import SearchIcon from '@material-ui/icons/Search';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+
+const appBarStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+    display: 'none',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+    },
+  }
+}));
+
+const gridStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+  container: {
+    margin: theme.margin(5)
+  }
+}));
 
 class App extends React.Component {
   state={
@@ -32,32 +55,28 @@ class App extends React.Component {
     fetch('https://msc-dev-last-location.herokuapp.com/teams?_embed=employees')
     .then(res => res.json())
     .then((data) => {
-      this.setState({ teams: data })
-      console.log(this.state.teams)
+      this.setState({ teams: data });
     })
     .catch(console.log)
   }
 
   render () {
+    
     return (
       <div className="App">
-        <header className="">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>Last Location (Teams) </p>
-        </header>
-        <div className='App-body'>
-          <ul>
-            {this.state.teams.map((team) => (
-              <li>{team.name}
-                <ol>
-                  {team.employees.map((employee) => (
-                    <li>{employee.fullName}</li>
-                  ))}
-                </ol>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <AppBar position="static" style={{ background: '#2d2b55' }}>
+          <Toolbar>
+            <Typography className={appBarStyles.title} variant="h6" noWrap>Last Location</Typography>
+          </Toolbar>
+        </AppBar>
+        <Grid container spacing={3}>
+          <Grid item xs={3}>
+            <NestedList title='Teams' primaryList={this.state.teams} />
+          </Grid>
+          <Grid item xs={9}>
+            <Maps />
+          </Grid>
+      </Grid>
       </div>
     );
   }
