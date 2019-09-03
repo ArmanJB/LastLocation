@@ -1,19 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import Maps from './Maps';
-import List from './NestedList';
 import './App.css';
 import NestedList from './NestedList';
 
-import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 class App extends React.Component {
@@ -26,7 +19,6 @@ class App extends React.Component {
     this.setState({
       currentEmployee: employee
     });
-    // console.log(employee.fullName);
   }
 
   componentDidMount() {
@@ -39,6 +31,8 @@ class App extends React.Component {
   }
 
   render () {
+
+    let map = <Maps employee={this.state.currentEmployee} />;
     
     return (
       <div className="App">
@@ -52,7 +46,8 @@ class App extends React.Component {
             <NestedList title='Teams' primaryList={this.state.teams} onChildClick={employee => this.handleClick(employee)} />
           </Grid>
           <Grid item xs={9} style={{ position: 'relative' }}>
-            <Maps employee={this.state.currentEmployee} />
+            <div>{this.state.currentEmployee ? this.state.currentEmployee.fullName : 'N/S' }</div>
+            {map}
           </Grid>
       </Grid>
       </div>
