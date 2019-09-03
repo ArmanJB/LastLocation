@@ -8,7 +8,6 @@ import List from '@material-ui/core/List';
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-    maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
     float: "left"
   },
@@ -31,7 +30,7 @@ export default function NestedList(props) {
       className={classes.root}
     >
         {props.primaryList.map((team) => (
-            <NestedListItem key={team.id} team={team} classes={classes} />
+            <NestedListItem key={team.id} team={team} classes={classes} onChildClick={employee => props.onChildClick(employee)} />
         ))}
         
     </List>

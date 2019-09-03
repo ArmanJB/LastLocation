@@ -16,39 +16,17 @@ import SearchIcon from '@material-ui/icons/Search';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
-const appBarStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
-  }
-}));
-
-const gridStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-  container: {
-    margin: theme.margin(5)
-  }
-}));
-
 class App extends React.Component {
   state={
-    teams: []
+    teams: [],
+    currentEmployee: null
+  }
+
+  handleClick(employee) {
+    this.setState({
+      currentEmployee: employee
+    });
+    // console.log(employee.fullName);
   }
 
   componentDidMount() {
@@ -66,15 +44,15 @@ class App extends React.Component {
       <div className="App">
         <AppBar position="static" style={{ background: '#2d2b55' }}>
           <Toolbar>
-            <Typography className={appBarStyles.title} variant="h6" noWrap>Last Location</Typography>
+            <Typography variant="h6" noWrap>Last Location</Typography>
           </Toolbar>
         </AppBar>
-        <Grid container spacing={3}>
-          <Grid item xs={3}>
-            <NestedList title='Teams' primaryList={this.state.teams} />
+        <Grid container spacing={1} style={{ minHeight: '45rem' }}>
+          <Grid item xs={3} style={{ maxHeight: '60rem', overflow: 'auto' }}>
+            <NestedList title='Teams' primaryList={this.state.teams} onChildClick={employee => this.handleClick(employee)} />
           </Grid>
-          <Grid item xs={9}>
-            <Maps />
+          <Grid item xs={9} style={{ position: 'relative' }}>
+            <Maps employee={this.state.currentEmployee} />
           </Grid>
       </Grid>
       </div>

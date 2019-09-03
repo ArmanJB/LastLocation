@@ -35,7 +35,7 @@ export default function NestedListItem(props) {
             <Collapse in={open} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
                     {props.team.employees.map((employee) => (
-                        <ListItem key={employee.id} button className={props.classes.nested} onClick={() => (console.log('clicked!'))}>
+                        <ListItem key={employee.id} button className={props.classes.nested} onClick={() => props.onChildClick(employee)}>
                             <ListItemAvatar>
                                 <Avatar alt={employee.fullName} src={employee.avatarUrl} />
                             </ListItemAvatar>
