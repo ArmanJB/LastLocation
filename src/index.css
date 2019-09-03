@@ -21,11 +21,19 @@ code {
   height: 50rem;
   float: right;
 }
+.MuiGrid-spacing-xs-1{
+  width: 100% !important;
+}
+
+.MuiGrid-grid-xs-9 > div{
+  position: relative;
+  height: 100%;
+}
 
 .info-window {
   background-color: white;
   padding: 0.5rem;
-  width: 17rem;
+  width: 18rem;
   height: 5rem;
 }
 
@@ -39,9 +47,10 @@ code {
 }
 
 .description-container {
-  width: 12rem;
+  width: 13rem;
   margin: 0;
   float: right;
+  text-align: left;
 }
 
 .info-window img {

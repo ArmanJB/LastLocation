@@ -26,7 +26,7 @@ export default function NestedListItem(props) {
                 <ListItemText primary={props.team.name} />
                 {open ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
-            <Collapse in={open} timeout="auto" unmountOnExit>
+            <Collapse in={open} timeout="auto" unmountOnExit style={{ background: '#6d6986', color: '#ffffff'}}>
                 <List component="div" disablePadding>
                     {props.team.employees.map((employee) => (
                         <ListItem key={employee.id} button className={props.classes.nested} onClick={() => props.onChildClick(employee)}>

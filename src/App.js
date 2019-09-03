@@ -31,25 +31,23 @@ class App extends React.Component {
   }
 
   render () {
-
-    let map = <Maps employee={this.state.currentEmployee} />;
+    const map = <Maps employee={this.state.currentEmployee} />;
     
     return (
       <div className="App">
-        <AppBar position="static" style={{ background: '#2d2b55' }}>
+        <AppBar position="static" style={{ background: '#342556' }}>
           <Toolbar>
             <Typography variant="h6" noWrap>Last Location</Typography>
           </Toolbar>
         </AppBar>
-        <Grid container spacing={1} style={{ minHeight: '45rem' }}>
-          <Grid item xs={3} style={{ maxHeight: '60rem', overflow: 'auto' }}>
+        <Grid container spacing={1} style={{ minHeight: '45rem', marginTop: '1rem' }}>
+          <Grid item xs={3} style={{ maxHeight: '45rem', overflow: 'auto' }}>
             <NestedList title='Teams' primaryList={this.state.teams} onChildClick={employee => this.handleClick(employee)} />
           </Grid>
-          <Grid item xs={9} style={{ position: 'relative' }}>
-            <div>{this.state.currentEmployee ? this.state.currentEmployee.fullName : 'N/S' }</div>
+          <Grid item xs={9} style={{ position: 'relative', padding: '1rem' }}>
             {map}
           </Grid>
-      </Grid>
+        </Grid>
       </div>
     );
   }

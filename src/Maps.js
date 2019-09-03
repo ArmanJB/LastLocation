@@ -39,7 +39,19 @@ class MapContainer extends React.Component {
                 showingInfoWindow:false
             });
         }
+        if(prevProps.employee !== this.props.employee) {
+            this.recenterMap();
+        }
     }
+
+    recenterMap() {
+        const map = this.map;
+        const current = this.props.employee.lastLocation.split(',');
+    
+        if (map) {
+            map.panTo(new window.google.maps.LatLng(current[0], current[1]));
+        }
+      }
 
     render() {
         let map;
@@ -47,10 +59,13 @@ class MapContainer extends React.Component {
             let latLng = this.props.employee.lastLocation.split(',')
             map = (
                 <Map
-                google={this.props.google}
-                zoom={12}
-                style={mapStyles}
-                initialCenter={{ lat: latLng[0], lng: latLng[1]}}
+                    google={this.props.google}
+                    zoom={12}
+                    style={mapStyles}
+                    initialCenter={{ lat: latLng[0], lng: latLng[1] }}
+                    ref = {(ref) => { 
+                        this.map = ref ? ref.map : null; 
+                    }}
                 >
                     <Marker 
                     position={{ lat: latLng[0], lng: latLng[1]}} 
@@ -77,7 +92,7 @@ class MapContainer extends React.Component {
                 </Map>
             );
         }else{
-            map = <div>N/A</div>
+            map = <div>Select a team member on the right menu.</div>
         }
 
         return (<div>{map}</div>)
